@@ -30,7 +30,8 @@ const GlobalStyle = createGlobalStyle`
         color:white;
         padding:10px 30px;
         border-radius:2rem;
-        font-size:1.4rem
+        font-size:1.4rem;
+        margin:30px;
       }
       
     button:hover{
