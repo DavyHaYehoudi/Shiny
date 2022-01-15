@@ -25,7 +25,6 @@ const PageSubtitle = styled.h2`
   color: ${colors.secondary};
   font-weight: 300;
   text-align: center;
-  padding-bottom: 30px;
 `
 
 
