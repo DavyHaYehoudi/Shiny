@@ -15,6 +15,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 1- git clone https://github.com/OpenClassrooms-Student-Center/7150606-API-React-intermediaire.git \
 2- `npm install`\
-3- `npm start`\
+3- `npm start`
 
 <img width="727" alt="Capture d’écran 2022-01-15 à 18 24 46" src="https://user-images.githubusercontent.com/79283100/149629494-2e85594d-a51b-4b89-adfe-326f9f9d780c.png">
