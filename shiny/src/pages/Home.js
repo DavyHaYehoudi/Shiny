@@ -2,12 +2,13 @@ import React from 'react';
 import logoHome from '../assets/home.svg';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
+import colors from '../styles/colors'
 
 
 const HomePresentation = styled.div`
     margin:100px auto;
     padding:250px;
-    background:#F9F9FC;
+    background-color: ${colors.backgroundLight};
     height: 800px;
     display: grid;
     gap: 24px;

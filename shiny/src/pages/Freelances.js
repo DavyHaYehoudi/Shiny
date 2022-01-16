@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '../composants/Card';
-import DefaultPicture from '../assets/profile.png';
+// import DefaultPicture from '../assets/profile.png';
 import styled from 'styled-components';
 import colors from '../styles/colors';
+import { useState } from 'react/cjs/react.development';
+import axios from 'axios';
+import { Loader } from '../composants/Loader';
 
 const CardsContainer = styled.div`
   display: grid;
@@ -28,31 +31,20 @@ const PageSubtitle = styled.h2`
   padding-bottom: 30px;
 `
 
-
-const freelanceProfiles = [
-    {
-        name: 'Jane Doe',
-        jobTitle: 'Devops',
-        picture: DefaultPicture,
-    },
-    {
-        name: 'John Doe',
-        jobTitle: 'Développeur frontend',
-        picture: DefaultPicture,
-    },
-    {
-        name: 'Jeanne Biche',
-        jobTitle: 'Développeuse Fullstack',
-        picture: DefaultPicture,
-    },
-    {
-        name: 'Henri Labuche',
-        jobTitle: 'Développeur Fullstack',
-        picture: DefaultPicture,
-    },
-]
-
 const Freelances = () => {
+
+    const [profils, setProfils] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true)
+        axios
+            .get('http://localhost:8000/freelances')
+            .then(res => {
+                setProfils(res.data.freelancersList)
+                setIsLoading(false);
+            })
+    },[])
    
     return (
         <div>
@@ -60,16 +52,23 @@ const Freelances = () => {
             <PageSubtitle>
                 Chez Shiny nous réunissons les meilleurs profils pour vous.
             </PageSubtitle>
+            
+            {isLoading ?
+                <Loader />
+            :
             <CardsContainer>
-                {freelanceProfiles.map((profil,index) =>
+                
+                {profils.map((profil,index) =>
                     <Card
                         key={index}
                         label={profil.name}
-                        title={profil.jobTitle}
+                        title={profil.job}
                         picture={profil.picture}
                     />)
                 }
+                
             </CardsContainer>
+            }
         </div>
     );
 };

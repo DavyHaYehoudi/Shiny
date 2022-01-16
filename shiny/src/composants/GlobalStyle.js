@@ -1,13 +1,15 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
+import { useContext } from 'react';
+import { ThemeContext } from '../styles/context';
 
-const GlobalStyle = createGlobalStyle`
+
+
+const StyledGlobalStyle = createGlobalStyle`
 
     body{
-      font-size:1.4rem
-    }
-
-    div{
-        font-family: 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
+      font-family: 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
+      font-size:1.4rem;
+      background-color: ${({ isDarkMode }) => (isDarkMode ? '#2F2E41' : 'white')};
     }
 
     ul {
@@ -38,6 +40,12 @@ const GlobalStyle = createGlobalStyle`
         opacity: .9;
       }
     `
+
+    function GlobalStyle() {
+      const { theme } = useContext(ThemeContext)
+  
+      return <StyledGlobalStyle isDarkMode={theme === 'dark'} />
+  }
 
 
 export default GlobalStyle;
